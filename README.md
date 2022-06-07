@@ -122,10 +122,10 @@ if True:
     y_new = list()
     score=0
 
-    with open("test","r") as f:
-        for g in f.readlines():
+    with open("valeurstest.csv","r") as h:
+        for g in h.readlines():
             q = g.split(',')
-            X_new.append((float(t[1]),float(t[2])))
+            X_new.append((float(q[1]),float(q[2])))
             if 'B' in q[0]:
                 y_new.append(3)
             else:
@@ -136,12 +136,12 @@ if True:
         for i in range (50):
             if (y_est[i] == True and y_new[i] == 3) or (y_est[i] == False and y_new[i] == 4):
                 score += 1
-                plt.scatter(X_new[0, 1], X_new[0, 0], c='m')
+                plt.scatter(X_new[:,0], X_new[:,1], c='m')
             else:
-                plt.scatter(X_new[0, 1], X_new[0, 0], c='k')
+                plt.scatter(X_new[:,0], X_new[:,1], c='k')
 
 
-plt.scatter(X_new[:, 0], X_new[:, 1], c=y_new, cmap='winter')
+#plt.scatter(X_new[:, 0], X_new[:, 1], c=y_new, cmap='winter')
 
 score  = score / 50
 
@@ -150,5 +150,4 @@ plt.show()
 print("Score :",score,"Parametres :",w,b)
 
 #print(predict(X_new,w,b))
-
 
